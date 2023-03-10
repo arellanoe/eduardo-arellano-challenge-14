@@ -1,7 +1,7 @@
 const { User } = require('../models');
 
 const userController = {
-  // GET all users
+
   getAllUsers(req, res) {
     User.findAll()
       .then(dbUserData => res.render('home', { users: dbUserData }))
@@ -11,7 +11,7 @@ const userController = {
       });
   },
 
-  // GET one user by id
+
   getUserById(req, res) {
     User.findOne({
       where: {
@@ -31,7 +31,7 @@ const userController = {
       });
   },
 
-  // POST create new user
+
   createUser(req, res) {
     User.create({
       username: req.body.username,
@@ -53,7 +53,7 @@ const userController = {
       });
   },
 
-  // POST user login
+
   login(req, res) {
     User.findOne({
       where: {
@@ -82,7 +82,6 @@ const userController = {
     });
   },
 
-  // POST user logout
   logout(req, res) {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
@@ -93,7 +92,6 @@ const userController = {
     }
   },
 
-  // PUT update user by id
   updateUser(req, res) {
     User.update(req.body, {
       where: {
@@ -113,7 +111,7 @@ const userController = {
       });
   },
 
-  // DELETE user by id
+  
   deleteUser(req, res) {
     User.destroy({
       where: {
